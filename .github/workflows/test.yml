@@ -4,6 +4,9 @@ on:
   push:
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
   python-tests:
     runs-on: ubuntu-latest
@@ -11,8 +14,13 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
-      - name: Run tests
+          python-version: "3.11"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Run Python tests
         run: python -m unittest discover -s tests -v
       - name: Run safe-mode demo
         run: python scripts/demo_strategy.py
+      - name: Run backtest smoke test
+        run: python backtest/run_backtest.py
