@@ -142,14 +142,3 @@ export function verifyCloseCallTrade(trade) {
   }
 }
 
-export function createIdentity() {
-  const { privateKey, publicKey } = requireEd25519();
-  const spki = publicKey.export({ format: "der", type: "spki" });
-  return { privateKey, did: didFromPublicKey(spki.subarray(-32)) };
-}
-
-function requireEd25519() {
-  // Kept local so production callers can supply their own persistent key.
-  const { generateKeyPairSync } = require("node:crypto");
-  return generateKeyPairSync("ed25519");
-}
