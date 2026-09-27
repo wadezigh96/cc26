@@ -3,6 +3,7 @@ import { test } from "node:test";
 import { canonicalJson } from "../scripts/canonical_json.mjs";
 
 test("canonical JSON sorts trade fields like Python", () => {
+  const nested = { z: 3, a: 1 };
   const payload = {
     type: "trade",
     season: "close-1",
@@ -11,6 +12,7 @@ test("canonical JSON sorts trade fields like Python", () => {
     quantity: "0.10",
     price: "0",
     timestamp: "1234567890",
+    nested,
   };
 
   assert.equal(
