@@ -6,7 +6,7 @@ from backtest.run_backtest import START, run
 
 class BacktestTests(unittest.TestCase):
     def test_empty_rows_is_not_allowed(self):
-        with self.assertRaises(IndexError):
+        with self.assertRaises(ValueError):
             run([])
 
     def test_sample_rows_produce_deterministic_result(self):
