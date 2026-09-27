@@ -63,7 +63,7 @@ def did_from_public_key(public_key: bytes) -> str:
 
 def generate() -> DidKeyIdentity:
     private_key = Ed25519PrivateKey.generate()
-    did = did_from_public_key(private_key.public_key().public_bytes(Encoding.Raw, format=None))
+    did = did_from_public_key(private_key.public_key().public_bytes(Encoding.Raw, PublicFormat.Raw))
     return DidKeyIdentity(did=did, private_key=private_key)
 
 
