@@ -17,7 +17,7 @@ class StrategyTests(unittest.TestCase):
         self.assertEqual(result.reason, "outside_reference_window")
 
     def test_rejects_high_volatility(self):
-        prices = [D("180"), D("195"), D("175"), D("198"), D("172"), D("200"), D("170"), D("202"), D("168"), D("204"), D("166"), D("205")]
+        prices = [D("180"), D("190"), D("180"), D("190"), D("180"), D("190"), D("180"), D("190"), D("180"), D("190"), D("180"), D("185")]
         result = decide(prices, D("185"), D("10000"))
         self.assertEqual(result.action, "WAIT")
         self.assertEqual(result.reason, "volatility_gate")
