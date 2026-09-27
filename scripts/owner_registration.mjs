@@ -1,4 +1,5 @@
-import { createPrivateKey, createPublicKey, readFileSync } from "node:crypto";
+import { createPrivateKey, createPublicKey } from "node:crypto";
+import { readFileSync } from "node:fs";
 import { signRoomMessage, ownerText } from "./close_call_protocol.mjs";
 import { didFromPublicKey } from "./did_key.mjs";
 
