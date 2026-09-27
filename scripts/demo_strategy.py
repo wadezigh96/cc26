@@ -1,4 +1,9 @@
 from decimal import Decimal as D
+from pathlib import Path
+import sys
+
+# Allow direct execution from the repository root in CI and locally.
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from src.strategy.close_call_strategy import decide
 
