@@ -1,4 +1,4 @@
-import { createPrivateKey, createPublicKey, sign } from "node:crypto";
+import { createPrivateKey, createPublicKey, sign, verify } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { didFromPublicKey } from "./did_key.mjs";
 
@@ -35,5 +35,12 @@ const signature = sign(null, Buffer.from(message), privateKey);
 
 console.log("DID:", did);
 console.log("TRADE_MESSAGE:", message);
+const selfVerified = verify(null, Buffer.from(message, "utf8"), publicKey, signature);
+if (!selfVerified) {
+  console.error("SELF_VERIFY: FAIL");
+  process.exit(1);
+}
+
 console.log("SIGNATURE_BASE64:", signature.toString("base64"));
+console.log("SELF_VERIFY: PASS");
 console.log("PRIVATE_KEY_USED: yes (not printed)");
