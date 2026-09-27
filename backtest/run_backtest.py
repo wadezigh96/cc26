@@ -9,6 +9,9 @@ START = Decimal("10000")
 
 
 def run(rows: list[dict], qty: Decimal = Decimal("1")) -> dict:
+    if not rows:
+        raise ValueError("rows must not be empty")
+
     cash = START
     position = Decimal("0")
     entry = Decimal("0")
