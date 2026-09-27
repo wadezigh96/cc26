@@ -17,6 +17,6 @@ test("canonical JSON sorts trade fields like Python", () => {
 
   assert.equal(
     canonicalJson(payload),
-    '{"price":"0","quantity":"0.10","season":"close-1","side":"LONG","symbol":"xyz:NVDA","timestamp":"1234567890","type":"trade"}',
+    '{"nested":{"a":1,"z":3},"price":"0","quantity":"0.10","season":"close-1","side":"LONG","symbol":"xyz:NVDA","timestamp":"1234567890","type":"trade"}',
   );
 });
