@@ -33,4 +33,4 @@ jobs:
         with:
           node-version: "20"
       - name: Run Node Ed25519 tests
-        run: node --test tests/node_identity_test.mjs
+        run: node --test tests/
