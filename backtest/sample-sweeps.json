@@ -1,0 +1,8 @@
+[
+  {"sweep":1,"reference":"180.00","close":"180.60","signalPrice":"181.20"},
+  {"sweep":2,"reference":"180.60","close":"181.10","signalPrice":"181.00"},
+  {"sweep":3,"reference":"181.10","close":"180.20","signalPrice":"180.40"},
+  {"sweep":4,"reference":"180.20","close":"179.50","signalPrice":"179.80"},
+  {"sweep":5,"reference":"179.50","close":"180.40","signalPrice":"180.10"},
+  {"sweep":6,"reference":"180.40","close":"181.30","signalPrice":"181.00"}
+]
