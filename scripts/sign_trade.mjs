@@ -1,6 +1,7 @@
 import { createPrivateKey, createPublicKey, sign, verify } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { didFromPublicKey } from "./did_key.mjs";
+import { canonicalJson } from "./canonical_json.mjs";
 
 const keyPath = process.env.CC26_PRIVATE_KEY_FILE;
 if (!keyPath) {
@@ -30,7 +31,7 @@ const payload = {
   timestamp: process.env.CC26_TIMESTAMP ?? String(Date.now()),
 };
 
-const message = JSON.stringify(payload);
+const message = canonicalJson(payload);
 const signature = sign(null, Buffer.from(message), privateKey);
 
 console.log("DID:", did);
