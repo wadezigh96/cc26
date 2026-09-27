@@ -1,4 +1,4 @@
-import { createPrivateKey, sign } from "node:crypto";
+import { createPrivateKey, createPublicKey, sign } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { didFromPublicKey } from "./did_key.mjs";
 
@@ -15,7 +15,9 @@ const privateKey = createPrivateKey({
   type: "pkcs8",
 });
 
-const rawPublicKey = privateKey.export({ format: "der", type: "spki" }).subarray(-32);
+// A private key must be converted to a public KeyObject before exporting SPKI.
+const publicKey = createPublicKey(privateKey);
+const rawPublicKey = publicKey.export({ format: "der", type: "spki" }).subarray(-32);
 const did = didFromPublicKey(rawPublicKey);
 
 const payload = {
