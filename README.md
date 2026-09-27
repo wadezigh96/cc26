@@ -55,3 +55,21 @@ Trade builder + Ed25519 signing (later)
 ```
 
 Live execution is intentionally not implemented in this first stage.
+
+
+## Close Call protocol tooling
+
+The repository now includes the draft Close Call wire-format implementation in `scripts/close_call_protocol.mjs`.
+
+Generate an owner-registration message locally with your existing private key file:
+
+```bash
+export CC26_PRIVATE_KEY_FILE="$HOME/cc26-private-key.txt"
+export CC26_ROOM="close1"
+export CC26_NONCE="0"
+node scripts/owner_registration.mjs
+```
+
+The command prints the DID, exact signing text, and Base64URL signature. It **does not print the private key** and does not post anything to technocore.chat.
+
+Before any live submission, verify the signed launch record and the referee/package hashes. The public challenge repository explicitly says the package remains draft until FLOP Labs signs and publishes the launch record.
