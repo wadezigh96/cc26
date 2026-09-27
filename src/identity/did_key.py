@@ -6,7 +6,7 @@ from dataclasses import dataclass
 from typing import Final
 
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey, Ed25519PublicKey
-from cryptography.hazmat.primitives.serialization import Encoding, PrivateFormat, NoEncryption
+from cryptography.hazmat.primitives.serialization import Encoding, PublicFormat, PrivateFormat, NoEncryption
 
 # did:key Ed25519 multicodec: 0xed01 (varint-encoded ed25519-pub).
 ED25519_PUB_CODEC: Final[bytes] = b"\xed\x01"
@@ -46,7 +46,7 @@ class DidKeyIdentity:
 
     @property
     def public_key_bytes(self) -> bytes:
-        return self.private_key.public_key().public_bytes(Encoding.Raw, format=None)
+        return self.private_key.public_key().public_bytes(Encoding.Raw, PublicFormat.Raw)
 
     def private_key_raw(self) -> bytes:
         return self.private_key.private_bytes(Encoding.Raw, PrivateFormat.Raw, NoEncryption())
