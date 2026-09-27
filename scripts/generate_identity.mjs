@@ -1,4 +1,5 @@
 import { generateKeyPairSync, createPrivateKey, createPublicKey, sign, verify } from "node:crypto";
+import { canonicalJson } from "./canonical_json.mjs";
 
 function base58btc(buf) {
   const alphabet = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
@@ -30,7 +31,7 @@ const did = "did:key:z" + base58btc(didKeyBytes);
 // Write it only to stdout so the user can save it locally.
 const privateKeyBase64 = privateKey.toString("base64");
 
-const challenge = JSON.stringify({ t: "owner", season: "close-1", key: did });
+const challenge = canonicalJson({ t: "owner", season: "close-1", key: did });
 const signature = sign(null, Buffer.from(challenge), createPrivateKey({ key: privateKey, format: "der", type: "pkcs8" }));
 const verified = verify(
   null,
