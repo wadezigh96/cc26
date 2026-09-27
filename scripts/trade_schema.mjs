@@ -1,5 +1,5 @@
 const TRADE_KEYS = ["type", "season", "symbol", "side", "quantity", "price", "timestamp"];
-const DECIMAL_RE = /^(?:0|[1-9]\\d*)(?:\\.\\d+)?$/;
+const DECIMAL_RE = /^(?:0|[1-9]\d*)(?:\.\d+)?$/;
 
 function fail(message) { throw new Error(message); }
 
